@@ -2,16 +2,8 @@
   (:require [clojure.test :refer :all]
             [lamma-game.core :refer :all]))
 
-(deftest a-test
-  (testing "FIXME, I fail."
-    (is (= 0 0))))
-
-(deftest a-test
-  (testing "FIXME, I fail."
-    (is (= 0 0))))
-
 (deftest build-deck-test
-  (testing "FIXME, I fail."
+  (testing "Shows that the build-deck function produces a deck with 8 cards for each number"
     (is (=
          (build-deck)
          (map conj
