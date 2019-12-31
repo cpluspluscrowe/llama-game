@@ -20,8 +20,35 @@
 
 (defn draw-card [deck]
   (let [updated-deck (pop deck)
-        drawn-card (first deck)
-        ]
-    (hash-map :deck updated-deck :card drawn-card)
-    ))
+        drawn-card (first deck)]
+    (hash-map :deck updated-deck :card drawn-card)))
+
+(defstruct player :deck :score)
+
+;; (struct player "eggplant" "pizza")
+
+(defn has-won [person]
+  (if (count (:deck person) 0) true
+      false))
+
+(defn discard [card discard]
+  (conj discard card))
+
+(defn discard-from-hand [card hand]
+  ;; ensure the hand contains the card
+  (do
+    (some {card} hand)
+    (remove {card} hand)))
+
+(defn discard-from-player [card person]
+  (let [hand (:deck person)]
+    (discard-from-hand card hand)))
+
+(defn count-points [hand]
+  (reduce + hand))
+
+(defn count-person-points [person]
+  (let [hand (:deck person)]
+    (count-points hand)))
+
 

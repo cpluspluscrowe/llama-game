@@ -19,5 +19,4 @@
   (testing "Shows that the build-deck function produces a deck with 8 cards for each number"
     (is (=
          (draw-card (list 1))
-         (hash-map :deck (list) :card 1)
-         ))))
+         (hash-map :deck (list) :card 1)))))
