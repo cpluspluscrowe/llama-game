@@ -1,7 +1,7 @@
 (ns lamma-game.core)
 
 (defn -main [& args]
-  (println "Main works"))
+  (println "Start card game functionality here"))
 
 (def unused-deck (list))
 
@@ -18,14 +18,19 @@
 (defn get-deck [unshuffled-deck]
   (shuffle unshuffled-deck))
 
+(defn get-game-deck []
+  (let [deck (build-deck)
+        shuffled (get-deck deck)
+        ]
+    shuffled
+    ))
+
 (defn draw-card [deck]
   (let [updated-deck (pop deck)
         drawn-card (first deck)]
     (hash-map :deck updated-deck :card drawn-card)))
 
 (defstruct player :deck :score)
-
-;; (struct player "eggplant" "pizza")
 
 (defn has-won [person]
   (if (count (:deck person) 0) true
@@ -78,13 +83,14 @@
     current-player-number))
 
 
-
-
-
-
-
-
-
-
-
+(defn initialize-game
+  ([] (initialize-game 4))
+  ([number-of-players]
+   (let [deck (get-game-deck)
+         discard (list)
+         players (repeat (struct person list() 0) number-of-players)
+         ]
+     ;; run turns until a player reaches a winning state
+     ;; remember to update decks, player cards, and the discard pile
+   )
 
