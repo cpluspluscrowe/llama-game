@@ -63,9 +63,21 @@
 (defn count-all-cards [players]
   (let [hands (map get-hand-from-player players)
         counts (map count-cards-in-hand hands)]
-
-
     counts))
+
+(def cards-per-player 6)
+
+(defn get-current-player [discard players]
+  (let [card-count (count-all-cards players)
+        discard-count (count discard)
+        number-of-players (count players)
+        starting-card-count (* cards-per-player number-of-players)
+        current-card-count (+ card-count discard-count)
+        total-turns (- starting-card-count current-card-count)
+        current-player-number (% total-turns number-of-players)]
+    current-player-number))
+
+
 
 
 
