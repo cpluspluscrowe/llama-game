@@ -51,4 +51,28 @@
   (let [hand (:deck person)]
     (count-points hand)))
 
+(defn get-hand-from-player [person]
+  (:deck person))
+
+(defn get-all-hands [players]
+  (map get-hand-from-player players))
+
+(defn count-cards-in-hand [hand]
+  (count hand))
+
+(defn count-all-cards [players]
+  (let [hands (map get-hand-from-player players)
+        counts (map count-cards-in-hand hands)]
+
+
+    counts))
+
+
+
+
+
+
+
+
+
 
